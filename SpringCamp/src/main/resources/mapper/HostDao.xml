@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD 3.0//EN"
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+						
+<mapper namespace="com.springproject.base.dao.HostDao">
+	<select id="checkDao" resultType="int">
+		select h.hSeq from host h inner join client c on h.hId = c.cId where
+		 c.cId = #{cId} and c.cPw = #{cPw}
+	</select>
+
+	<select id="myCampDao" resultType="com.springproject.base.model.RegcampDto">
+		select regImage1, regName, regDetailaddress, regSeq from regcamp 
+		where host_hSeq = #{hSeq} and regDdate is null
+	</select>
+
+</mapper>

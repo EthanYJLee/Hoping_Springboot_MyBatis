@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD 3.0//EN"
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+						
+<mapper namespace="com.springproject.base.dao.HostManageDao">
+
+<!-- 후기 관리 -->
+<!-- 리뷰 리스트 출력 -->
+	<select id="reviewListDao" resultType="com.springproject.base.model.HostReplyReviewDto">
+		select rv.rvSeq, reg.regName, rv.rvCId, rv.rvCName, rv.rvTitle, rv.rvTime 
+		from review rv inner join regcamp reg 
+		on rv.regcamp_regSeq = reg.regSeq where rv.rvDtime is null and 
+		rv.regcamp_host_hSeq = #{hSeq} order by rv.rvtime desc
+	</select>
+	
+<!-- 리뷰 content view -->	
+	<select id="reviewContentDao" resultType="com.springproject.base.model.HostReplyReviewDto">
+		select rv.rvSeq, reg.regName, rv.rvCName, rv.rvCId, rv.rvTitle, rv.rvTime, rv.rvContent
+		from regcamp reg inner join review rv on reg.regSeq = rv.regcamp_regSeq where rv.rvDtime is null and 
+		rv.rvSeq = #{rvSeq}
+	</select>
+
+<!-- 답변 작성 정보 -->
+	<select id="reviewInfoDao" resultType="com.springproject.base.model.HostReplyReviewDto">
+		select rvCId, regcamp_regSeq from review where rvSeq = #{rvSeq}
+	</select>
+
+<!-- 리뷰 답변 작성하기 -->
+	<select id="replyReviewDao">
+		insert into rcomment (rcContent, rcTime, client_cId, review_rvSeq, 
+		review_regcamp_regSeq, review_regcamp_host_hSeq) 
+		values (#{replyContent}, now(), #{rvCId}, #{rvSeq}, #{regSeq}, #{hSeq})
+	</select>
+	
+<!-- 댓글 그룹 업데이트 -->
+	<update id="updateReviewGroupDao">
+		update rcomment set rcGroup = rcSeq where rcGroup is null
+	</update>
+	
+<!-- 검색 콤보박스용 캠핑장 이름 목록 -->
+	<select id="campNameDao" resultType="String">
+		select regName from regcamp where host_hSeq = #{hSeq}
+	</select>
+	
+<!-- 위치, 설명, 이름, 전화번호, 카테고리 등록 -->	
+	<insert id="addCampLocationDao">
+		insert into regcamp (regDetailaddress, regSummary, regName, regDate, regTel, regCategory, host_hSeq) 
+		values (#{regDetailaddress}, #{regSummary}, #{regName}, curdate(), #{regTel}, 
+		#{regCategory}, #{hSeq})
+	</insert>
+	
+<!-- 현재 페이지에서 생성된 캠핑장 번호 가져오기 (세션용) -->
+	<select id="myNewRegseqDao" resultType="int">
+		select max(regSeq) from regcamp where host_hSeq = #{hSeq}
+	</select>
+	
+<!-- 편의시설 등록 -->
+	<insert id="addCampFacilityDao">
+		insert into facility (fName, regcamp_regSeq, regcamp_host_hSeq) 
+		values (#{fName}, #{regSeq}, #{hSeq})
+	</insert>
+	
+<!-- 키워드 등록 -->
+	<insert id="addCampKeywordDao">
+		insert into keyword (kName, regcamp_regSeq, regcamp_host_hSeq)
+		values (#{kName}, #{regSeq}, #{hSeq})
+	</insert>
+	
+<!-- 약도 디폴트 이미지 보여주기 -->
+	<select id="showDefaultMapDao" resultType="String">
+		select regImage4 from regcamp where regSeq = #{regSeq}
+	</select>
+
+	
+	
+</mapper>

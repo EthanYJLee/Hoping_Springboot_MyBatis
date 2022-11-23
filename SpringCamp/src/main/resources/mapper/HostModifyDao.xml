@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD 3.0//EN"
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+						
+<mapper namespace="com.springproject.base.dao.HostModifyDao">
+<!-- 캠핑장 수정 메인화면에 캠핑장이름? -->
+	<select id="checkMyCampDao" resultType="String">
+		select regName from regcamp where regSeq = #{regSeq} and host_hSeq = #{hSeq} and regDdate is null
+	</select>
+	
+<!-- 기존 정보 불러오기 -->
+	<select id="myCampInfoDao" resultType="com.springproject.base.model.RegcampDto">
+		select regTel, regCategory, regDetailaddress, regName, regImage1, regImage2, regImage3, regImage4
+		from regcamp where regSeq = #{regSeq} and host_hSeq = #{hSeq} and regDdate is null
+	</select>
+<!-- 키워드 불러오기 -->
+	<select id="myKeywordInfoDao" resultType="com.springproject.base.model.KeywordDto">
+		select kName from keyword where regcamp_regSeq = #{regSeq} and regcamp_host_hSeq = #{hSeq}
+	</select>
+
+<!-- 편의시설 불러오기 -->
+	<select id="myFacilityInfoDao" resultType="com.springproject.base.model.FacilityDto">
+		select fName from facility where regcamp_regSeq = #{regSeq} and regcamp_host_hSeq = #{hSeq}
+	</select>
+
+<!-- 자리 불러오기 (번호, 가격, 수용인원) -->
+	<select id="myRoomInfoDao" resultType="com.springproject.base.model.RoomDto">
+		select roNum, roPrice, roMax from room where regcamp_regSeq = #{regSeq} 
+		and regcamp_host_hSeq = #{hSeq} and roDdate is null
+	</select>
+
+<!-- 캠핑장 삭제 전 잔여 예약 여부 체크하기 -->
+	<select id="checkRemainingBookDao" resultType="com.springproject.base.model.RegcampDto">
+	select reg.regName, reg.regTel, reg.regDetailaddress, reg.regSummary, 
+	reg.regImage1, reg.regImage2, reg.regImage3, reg.regImage4, reg.regDate 
+	from regcamp reg inner join book bo on 
+	reg.regSeq = bo.pay_room_regcamp_regSeq and reg.host_hSeq = bo.pay_room_regcamp_host_hSeq
+	where (select count(*) from book 
+	where boCheckindate>=curdate() and pay_room_regcamp_regSeq = #{regSeq}) = 0 and 
+	reg.regSeq = #{regSeq} and reg.host_hSeq = #{hSeq} and reg.regDdate is null group by reg.regSeq;
+	</select>
+	
+<!-- 캠핑장 영구 삭제 (Ddate에 업데이트) -->	
+	<update id="campIsDeletedDao">
+		update regcamp set regDdate = now() where regSeq = #{regSeq}
+	</update>
+	
+	
+	
+	
+	
+	
+
+
+</mapper>

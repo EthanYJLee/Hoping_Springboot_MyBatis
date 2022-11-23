@@ -1,0 +1,127 @@
+package com.springproject.base.model;
+
+import java.sql.Timestamp;
+
+public class RoomDto {
+	
+	int roSeq;
+	int roNum;
+	int roPrice;
+	int roMax;
+	int roOccupied;
+	Timestamp roDate;
+	Timestamp roMdate;
+	Timestamp roDdate;
+	int regcamp_regSeq;
+	int regcamp_host_hSeq;
+	
+	public RoomDto() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public RoomDto(int roSeq, int roNum, int roPrice, int roMax, int roOccupied, Timestamp roDate, Timestamp roMdate,
+			Timestamp roDdate, int regcamp_regSeq, int regcamp_host_hSeq) {
+		super();
+		this.roSeq = roSeq;
+		this.roNum = roNum;
+		this.roPrice = roPrice;
+		this.roMax = roMax;
+		this.roOccupied = roOccupied;
+		this.roDate = roDate;
+		this.roMdate = roMdate;
+		this.roDdate = roDdate;
+		this.regcamp_regSeq = regcamp_regSeq;
+		this.regcamp_host_hSeq = regcamp_host_hSeq;
+	}
+
+	public RoomDto(int roNum, int roPrice, int roMax) {
+		super();
+		this.roNum = roNum;
+		this.roPrice = roPrice;
+		this.roMax = roMax;
+	}
+
+	public int getRoSeq() {
+		return roSeq;
+	}
+
+	public void setRoSeq(int roSeq) {
+		this.roSeq = roSeq;
+	}
+
+	public int getRoNum() {
+		return roNum;
+	}
+
+	public void setRoNum(int roNum) {
+		this.roNum = roNum;
+	}
+
+	public int getRoPrice() {
+		return roPrice;
+	}
+
+	public void setRoPrice(int roPrice) {
+		this.roPrice = roPrice;
+	}
+
+	public int getRoMax() {
+		return roMax;
+	}
+
+	public void setRoMax(int roMax) {
+		this.roMax = roMax;
+	}
+
+	public int getRoOccupied() {
+		return roOccupied;
+	}
+
+	public void setRoOccupied(int roOccupied) {
+		this.roOccupied = roOccupied;
+	}
+
+	public Timestamp getRoDate() {
+		return roDate;
+	}
+
+	public void setRoDate(Timestamp roDate) {
+		this.roDate = roDate;
+	}
+
+	public Timestamp getRoMdate() {
+		return roMdate;
+	}
+
+	public void setRoMdate(Timestamp roMdate) {
+		this.roMdate = roMdate;
+	}
+
+	public Timestamp getRoDdate() {
+		return roDdate;
+	}
+
+	public void setRoDdate(Timestamp roDdate) {
+		this.roDdate = roDdate;
+	}
+
+	public int getRegcamp_regSeq() {
+		return regcamp_regSeq;
+	}
+
+	public void setRegcamp_regSeq(int regcamp_regSeq) {
+		this.regcamp_regSeq = regcamp_regSeq;
+	}
+
+	public int getRegcamp_host_hSeq() {
+		return regcamp_host_hSeq;
+	}
+
+	public void setRegcamp_host_hSeq(int regcamp_host_hSeq) {
+		this.regcamp_host_hSeq = regcamp_host_hSeq;
+	}
+	
+	
+	
+
+}
