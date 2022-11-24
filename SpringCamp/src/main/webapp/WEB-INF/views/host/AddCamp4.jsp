@@ -78,17 +78,17 @@
  	
  	<%-- 수정할 약도 업로드 --%>
 	<p style="font-size: 13px; color: blue;">*사진을 선택 후 Upload 버튼을 눌러 주세요.</p>
+	
 	<%-- map form --%>
- 	<form action="HiddenImageUpload.jsp?link=updateRoughMap" method="post" enctype="multipart/form-data">
-		<input type="file" name="file" size="50">
+ 	<form action="upload_rough_map" method="post" enctype="multipart/form-data">
+		<input type="file" id="uploadFile" name="uploadFile" size="50">
 		<br>
 		<input type="submit" value="Upload" size="50">
-		<input type="hidden" name="link" value="updateRoughMap">
 	</form>
 	
 	<div class="d-flex flex-row-reverse">
  		<form class="p-2">
- 			<a href="campingAddSelRoom" style="border-radius: 15px; width:100px;" class="btn mybtns btn-secondary">다음</a>
+ 			<a href="rooms_view" style="border-radius: 15px; width:100px;" class="btn mybtns btn-secondary">다음</a>
  		</form>
  	</div>
 	

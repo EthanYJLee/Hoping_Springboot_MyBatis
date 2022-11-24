@@ -47,7 +47,7 @@
  		<div class="col-12"><a href="my_camp_info" type="button" style="border-radius: 10px; width:400px; height: 60px; background-color: #E94560; border: 0px;" class="btn btn-secondary">기존 정보 보기</a></div>
  	</div>
  	<div class="row myhdrow">
- 		<div class="col-6 "><a href="HostInfoMLoView" type="button" style="border-radius: 10px; width:400px; height: 60px;" class="btn mybtns btn-secondary">캠핑장 위치 / 설명</a></div>
+ 		<div class="col-6 "><a href="camp_location_view" type="button" style="border-radius: 10px; width:400px; height: 60px;" class="btn mybtns btn-secondary">캠핑장 위치 / 설명</a></div>
  		<div class="col-6 "><a href="HostInfoMNCTView" type="button" style="border-radius: 10px; width:400px; height: 60px;" class="btn mybtns btn-secondary">이름 / 카테고리 / 전화번호</a></div>
  	</div>
  	<div class="row myhdrow">

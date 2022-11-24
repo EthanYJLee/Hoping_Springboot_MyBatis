@@ -46,7 +46,31 @@
 		update regcamp set regDdate = now() where regSeq = #{regSeq}
 	</update>
 	
+<!-- 캠핑장 위치 수정 전 정보 가져오기 -->
+	<select id="campLocationViewDao" resultType="com.springproject.base.model.RegcampDto">
+		select regDetailaddress, regSummary from regcamp where regSeq = #{regSeq}
+	</select>
+
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+<!-- 캠핑장 위치 수정 -->
+	<update id="modifyCampLocationDao">
+		update regcamp set regDetailaddress = #{regDetailaddress}, 
+		regSummary = #{regSummary} where regSeq = #{regSeq}
+	</update>
 	
+<!-- 이름, 카테고리, 번호 수정페이지 -->
+	<select id="campNameViewDao" resultType="com.springproject.base.model.RegcampDto">
+		select regName, regCategory, regTel from regcamp where regSeq = #{regSeq}
+	</select>
+	
+<!-- 캠핑장 이름, 카테고리, 번호 수정 -->
+	<update id="modifyCampNameDao">
+		update regcamp set regName = #{regName}, regCategory = #{regCategory}, 
+		regTel = #{regTel} where regSeq = #{regSeq}
+	</update>
+
+<!--  -->
 	
 	
 	

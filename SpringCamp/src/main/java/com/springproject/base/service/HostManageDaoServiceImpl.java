@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.springproject.base.dao.HostManageDao;
 import com.springproject.base.model.HostReplyReviewDto;
+import com.springproject.base.model.RoomDto;
 @Service
 public class HostManageDaoServiceImpl implements HostManageDaoService {
 
@@ -67,6 +68,21 @@ public class HostManageDaoServiceImpl implements HostManageDaoService {
 	@Override
 	public String showDefaultMapDao(int regSeq) throws Exception {
 		return dao.showDefaultMapDao(regSeq);
+	}
+
+	@Override
+	public List<RoomDto> roomsViewDao(int regSeq, int hSeq) throws Exception {
+		return dao.roomsViewDao(regSeq, hSeq);
+	}
+
+	@Override
+	public void addRoomsDao(int roNum, int roPrice, int roMax, int regSeq, int hSeq) throws Exception {
+		dao.addRoomsDao(roNum, roPrice, roMax, regSeq, hSeq);
+	}
+
+	@Override
+	public void deleteRoomsDao(int roSeq) throws Exception {
+		dao.deleteRoomsDao(roSeq);
 	}
 
 

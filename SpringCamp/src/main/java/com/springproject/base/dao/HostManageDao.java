@@ -3,6 +3,7 @@ package com.springproject.base.dao;
 import java.util.List;
 
 import com.springproject.base.model.HostReplyReviewDto;
+import com.springproject.base.model.RoomDto;
 
 public interface HostManageDao {
 	
@@ -39,7 +40,13 @@ public interface HostManageDao {
 	// default 약도 보여주기
 	public String showDefaultMapDao(int regSeq) throws Exception;
 	
+	// 방 리스트 출력
+	public List<RoomDto> roomsViewDao (int regSeq, int hSeq) throws Exception;
 	
+	// 방 추가
+	public void addRoomsDao (int roNum, int roPrice, int roMax, int regSeq, int hSeq) throws Exception;
 	
+	// 방 삭제
+	public void deleteRoomsDao (int roSeq) throws Exception;
 	
 }

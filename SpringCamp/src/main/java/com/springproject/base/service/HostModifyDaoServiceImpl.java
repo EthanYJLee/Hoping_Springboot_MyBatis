@@ -51,6 +51,26 @@ public class HostModifyDaoServiceImpl implements HostModifyDaoService {
 	public void campIsDeletedDao(int hSeq, int regSeq) throws Exception {
 		dao.campIsDeletedDao(hSeq, regSeq);
 	}
+
+	@Override
+	public RegcampDto campLocationViewDao(int regSeq) throws Exception {
+		return dao.campLocationViewDao(regSeq);
+	}
+
+	@Override
+	public void modifyCampLocationDao(String regDetailaddress, String regsummary, int regSeq) throws Exception {
+		dao.modifyCampLocationDao(regDetailaddress, regsummary, regSeq);
+	}
+
+	@Override
+	public RegcampDto campNameViewDao(int regSeq) throws Exception {
+		return dao.campNameViewDao(regSeq);
+	}
+
+	@Override
+	public void modifyCampNameDao(String regName, String regCategory, String regTel, int regSeq) throws Exception {
+		dao.modifyCampNameDao(regName, regCategory, regTel, regSeq);
+	}
 	
 	
 }

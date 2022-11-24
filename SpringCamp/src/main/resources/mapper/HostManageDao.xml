@@ -72,6 +72,31 @@
 		select regImage4 from regcamp where regSeq = #{regSeq}
 	</select>
 
+<!-- 추가한 방 보여주기 -->
+	<select id="roomsViewDao" resultType="com.springproject.base.model.RoomDto">
+		select roNum, roPrice, roMax, roSeq from room where 
+		regcamp_regSeq = #{regSeq} and regcamp_host_hSeq = #{hSeq} and roDdate is null
+	</select>
+	
+<!-- 방 추가 -->
+	<insert id="addRoomsDao">
+		insert into room (roNum, roPrice, roMax, roDate, regcamp_regSeq, regcamp_host_hSeq) 
+		values (#{roNum}, #{roPrice}, #{roMax}, curdate(), #{regSeq}, #{hSeq})
+	</insert>
+	
+<!-- 방 삭제 -->
+	<delete id="deleteRoomsDao">
+		delete from room where roSeq = #{roSeq}
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 </mapper>

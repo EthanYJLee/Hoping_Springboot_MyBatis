@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.springproject.base.model.HostReplyReviewDto;
+import com.springproject.base.model.RoomDto;
 
 public class HostManageDaoImpl implements HostManageDao {
 	
@@ -74,6 +75,25 @@ public class HostManageDaoImpl implements HostManageDao {
 	public String showDefaultMapDao(int regSeq) throws Exception {
 		return sqlSession.selectOne(nameSpace + ".showDefaultMapDao");
 	}
+
+
+	@Override
+	public List<RoomDto> roomsViewDao(int regSeq, int hSeq) throws Exception {
+		return sqlSession.selectList(nameSpace + ".roomsViewDao");
+	}
+
+
+	@Override
+	public void addRoomsDao(int roNum, int roPrice, int roMax, int regSeq, int hSeq) throws Exception {
+		sqlSession.insert(nameSpace + ".addRoomsDao");
+	}
+
+
+	@Override
+	public void deleteRoomsDao(int roSeq) throws Exception {
+		sqlSession.delete(nameSpace + ".deleteRoomsDao");
+	}
+
 
 
 

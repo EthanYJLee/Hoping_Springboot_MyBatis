@@ -2,53 +2,71 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD 3.0//EN"
 						"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-						
+
 <mapper namespace="com.springproject.base.dao.MainStatusDao">
 
-<!-- 신규 예약건수 -->
+	<!-- 신규 예약건수 -->
 	<select id="newReservationDao" resultType="int">
-		select count(distinct(boGroup)) as nr from book where boDate = curdate() and pay_room_regcamp_host_hSeq = #{hSeq}
+		select
+		count(distinct(boGroup)) as nr from book where boDate = curdate() and
+		pay_room_regcamp_host_hSeq = #{hSeq}
 	</select>
-<!-- 금일 체크인 예정 -->
+	<!-- 금일 체크인 예정 -->
 	<select id="newCheckinDao" resultType="int">
-		select count(*) from book where boSeq = boGroup and boCheckindate = curdate() and pay_room_regcamp_host_hSeq = #{hSeq}
+		select count(*) from book
+		where boSeq = boGroup and boCheckindate = curdate() and
+		pay_room_regcamp_host_hSeq = #{hSeq}
 	</select>
-<!-- 금일 체크아웃 예정 -->
+	<!-- 금일 체크아웃 예정 -->
 	<select id="newCheckoutDao" resultType="int">
-		select count(checkout) from (select max(boCheckindate) as checkout 
-		from book where boCheckindate = curdate() and pay_room_regcamp_host_hSeq = #{hSeq} 
+		select count(checkout)
+		from (select max(boCheckindate) as checkout
+		from book where
+		boCheckindate = curdate() and pay_room_regcamp_host_hSeq =
+		#{hSeq}
 		group by boGroup) as result
 	</select>
-	
-<!-- 신규 문의건수 -->
+
+	<!-- 신규 문의건수 -->
 	<select id="newInquiryDao" resultType="int">
-		select count(*) from ask a inner join regcamp r on a.aRegSeq = r.regSeq
-		where date(a.aTime) = curdate() and a.aDtime is null and host_hSeq = #{hSeq}
+		select count(*) from ask a
+		inner join regcamp r on a.aRegSeq = r.regSeq
+		where date(a.aTime) =
+		curdate() and a.aDtime is null and host_hSeq = #{hSeq}
 	</select>
-<!-- 답변완료 -->
+	<!-- 답변완료 -->
 	<select id="repliedInquiryDao" resultType="int">
-		select count(*) from acomment ac inner join ask a on ac.ask_aSeq = a.aSeq 
-		where date(a.aTime) = curdate() and date(ac.acTime) = curdate() and ac.host_hSeq = #{hSeq}
+		select count(*) from
+		acomment ac inner join ask a on ac.ask_aSeq = a.aSeq
+		where
+		date(a.aTime) = curdate() and date(ac.acTime) = curdate() and
+		ac.host_hSeq = #{hSeq}
 	</select>
-	
-<!-- 월별 매출 / 예약건수 -->
-	
+
+	<!-- 월별 매출 / 예약건수 -->
 
 
 
 
 
-<!-- 신규 후기건수 -->
+
+	<!-- 신규 후기건수 -->
 	<select id="newReviewDao" resultType="int">
-		select count(*) from review rv inner join regcamp reg on 
-		rv.regcamp_regSeq = reg.regSeq where date(rv.rvTime) = curdate() 
-		and rv.rvDtime is null and reg.host_hSeq = #{hSeq}
+		select count(*) from review
+		rv inner join regcamp reg on
+		rv.regcamp_regSeq = reg.regSeq where
+		date(rv.rvTime) = curdate()
+		and rv.rvDtime is null and reg.host_hSeq =
+		#{hSeq}
 	</select>
-	
-<!-- 답변완료 -->
+
+	<!-- 답변완료 -->
 	<select id="repliedReviewDao" resultType="int">
-		select count(*) from rcomment rc inner join review rv on rc.review_rvSeq = rv.rvSeq 
-		where date(rv.rvTime) = curdate() and date(rc.rcTime) = curdate() and rv.regcamp_host_hSeq = #{hSeq}
+		select count(*) from
+		rcomment rc inner join review rv on rc.review_rvSeq = rv.rvSeq
+		where
+		date(rv.rvTime) = curdate() and date(rc.rcTime) = curdate() and
+		rv.regcamp_host_hSeq = #{hSeq}
 	</select>
-	
+
 </mapper>

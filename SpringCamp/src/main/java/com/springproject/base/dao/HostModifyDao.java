@@ -27,4 +27,13 @@ public interface HostModifyDao {
 	// 캠핑장 영구삭제
 	public void campIsDeletedDao(int hSeq, int regSeq) throws Exception;
 	
+	// 캠핑장 현재 위치, 소개 불러오기 (수정 전)
+	public RegcampDto campLocationViewDao(int regSeq) throws Exception;
+	
+	public void modifyCampLocationDao(String regDetailaddress, String regsummary, int regSeq) throws Exception;
+	
+	public RegcampDto campNameViewDao(int regSeq) throws Exception;
+	
+	public void modifyCampNameDao(String regName, String regCategory, String regTel, int regSeq) throws Exception;
+	
 }

@@ -83,6 +83,20 @@ public class RegcampDto {
 		super();
 		this.regName = regName;
 	}
+	
+	// 캠핑장 소개 이미지 검색, 입력용
+	public RegcampDto(String regImage1, String regImage2, String regImage3) {
+		super();
+		this.regImage1 = regImage1;
+		this.regImage2 = regImage2;
+		this.regImage3 = regImage3;
+	}
+	
+	public RegcampDto(String regDetailaddress, String regSummary) {
+		super();
+		this.regDetailaddress = regDetailaddress;
+		this.regSummary = regSummary;
+	}
 
 	public int getRegSeq() {
 		return regSeq;

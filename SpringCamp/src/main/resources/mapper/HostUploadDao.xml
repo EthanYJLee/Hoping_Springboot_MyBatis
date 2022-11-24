@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD 3.0//EN"
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+						
+<mapper namespace="com.springproject.base.dao.HostUploadDao">
+	<update id="uploadRoughMapDao">
+		update regcamp set regImage4 = #{newName} where regSeq = #{regSeq}
+	</update>
+	
+	<select id="campImageViewDao" resultType="com.springproject.base.model.RegcampDto">
+		select regImage1, regImage2, regImage3 from regcamp where regSeq = #{regSeq}
+	</select>
+	
+	<update id="uploadImage1Dao">
+		update regcamp set regImage1 = #{newName} where regSeq = #{regSeq}
+	</update>
+	
+	<update id="uploadImage2Dao">
+		update regcamp set regImage2 = #{newName} where regSeq = #{regSeq}
+	</update>
+	
+	<update id="uploadImage3Dao">
+		update regcamp set regImage3 = #{newName} where regSeq = #{regSeq}
+	</update>
+
+</mapper>
+

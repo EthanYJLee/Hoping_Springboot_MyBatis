@@ -3,6 +3,7 @@ package com.springproject.base.service;
 import java.util.List;
 
 import com.springproject.base.model.HostReplyReviewDto;
+import com.springproject.base.model.RoomDto;
 
 public interface HostManageDaoService {
 	
@@ -27,6 +28,12 @@ public interface HostManageDaoService {
 	public void addCampKeywordDao(String kName, int regSeq, int hSeq) throws Exception;
 	
 	public String showDefaultMapDao(int regSeq) throws Exception;
+	
+	public List<RoomDto> roomsViewDao (int regSeq, int hSeq) throws Exception;
+	
+	public void addRoomsDao (int roNum, int roPrice, int roMax, int regSeq, int hSeq) throws Exception;
+		
+	public void deleteRoomsDao (int roSeq) throws Exception;
 	
 
 

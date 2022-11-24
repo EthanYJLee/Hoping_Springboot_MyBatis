@@ -20,6 +20,15 @@ public interface HostModifyDaoService {
 	public RegcampDto checkRemainingBookDao(int hSeq, int regSeq) throws Exception;
 	
 	public void campIsDeletedDao(int hSeq, int regSeq) throws Exception;
+	
+	public RegcampDto campLocationViewDao(int regSeq) throws Exception;
+	
+	public void modifyCampLocationDao(String regDetailaddress, String regsummary, int regSeq) throws Exception;
+	
+	public RegcampDto campNameViewDao(int regSeq) throws Exception;
+	
+	public void modifyCampNameDao(String regName, String regCategory, String regTel, int regSeq) throws Exception;
+
 
 
 

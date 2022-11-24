@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springproject.base.model.HostReplyReviewDto;
+import com.springproject.base.model.RoomDto;
 import com.springproject.base.service.HostManageDaoService;
 
 @Controller
@@ -111,16 +112,48 @@ public class HostManageController {	// 옵션 관리하는 컨트롤러
 			manageDao.addCampKeywordDao(keywords[i], regSeq, hSeq);
 		}
 		
+		return "redirect:show_rough_map";
+	}
+	
+	@RequestMapping("/show_rough_map")
+	public String showRoughMap (HttpSession session, Model model) throws Exception {
+		int regSeq = (int)session.getAttribute("REGSEQ");
 		// 약도 디폴트 이미지 보여주기
 		String roughMap = manageDao.showDefaultMapDao(regSeq);
 		model.addAttribute("roughMap", roughMap);
+		return "host/AddCamp4";	
+	}
+
+	@RequestMapping("/rooms_view")
+	public String roomsView (HttpSession session, Model model) throws Exception {
+		int regSeq = (int)session.getAttribute("REGSEQ");
+		int hSeq = (int)session.getAttribute("HSEQ");
 		
-		return "host/AddCamp4";
+		List<RoomDto> dto = manageDao.roomsViewDao(regSeq, hSeq);
+		model.addAttribute("roomlist", dto);
+		
+		return "host/AddCamp5";
 	}
 	
-
+	@RequestMapping("/add_rooms")
+	public String addRooms (HttpSession session, HttpServletRequest request, Model model) throws Exception {
+		int regSeq = (int)session.getAttribute("REGSEQ");
+		int hSeq = (int)session.getAttribute("HSEQ");
+		int roNum = Integer.parseInt(request.getParameter("roNum"));
+		int roPrice = Integer.parseInt(request.getParameter("roPrice"));
+		int roMax = Integer.parseInt(request.getParameter("roMax"));
+		
+		manageDao.addRoomsDao(roNum, roPrice, roMax, regSeq, hSeq);
+		
+		return "redirect:rooms_view";
+	}
 	
-	
+	@RequestMapping("/delete_rooms")
+	public String deleteRooms (HttpServletRequest request) throws Exception {
+		int roSeq = Integer.parseInt(request.getParameter("roSeq"));
+		manageDao.deleteRoomsDao(roSeq);
+		return "redirect:rooms_view";
+	}
 	
 	
 	

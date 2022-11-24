@@ -33,7 +33,7 @@ public class HostModifyController {
 		if (regName != null) {
 			session.setAttribute("REGSEQ", regSeq);
 			model.addAttribute("regName", regName);
-			return "host/HostInfoMMain";
+			return "host/ModifyCampMain";
 		} else {
 			return "redirect:host/HostMain";
 		}
@@ -91,6 +91,46 @@ public class HostModifyController {
 		PrintWriter out = response.getWriter();
 		out.println("<script>alert('정상적으로 삭제되었습니다'); location.href='host_main'; </script>");
 		out.flush();
+	}
+	
+	@RequestMapping("/camp_location_view")
+	public String campLocationView(HttpSession session, Model model) throws Exception {
+		int regSeq = (int)session.getAttribute("REGSEQ");
+		
+		RegcampDto dto = service.campLocationViewDao(regSeq);
+		model.addAttribute("campLocationList", dto);
+		return "host/ModifyCampLocation";
+	}
+	
+	@RequestMapping("/modify_camp_location")
+	public String campLocationView(HttpServletRequest request, HttpSession session) throws Exception {
+		int regSeq = (int)session.getAttribute("REGSEQ");
+		String regDetailaddress = request.getParameter("regDetailaddress");
+		String regSummary = request.getParameter("regSummary");
+		
+		service.modifyCampLocationDao(regDetailaddress, regSummary, regSeq);
+		
+		return "redirect:modify_camp";
+	}
+	
+	@RequestMapping("/camp_name_view")
+	public String campNameView(HttpSession session, Model model) throws Exception {
+		int regSeq = (int)session.getAttribute("REGSEQ");
+		RegcampDto dto = service.campNameViewDao(regSeq);
+		model.addAttribute("campNameList", dto);
+		return "host/ModifyCampName";
+	}
+	
+	@RequestMapping("/modify_camp_name")
+	public String modifyCampName(HttpServletRequest request, HttpSession session) throws Exception {
+		int regSeq = (int)session.getAttribute("REGSEQ");
+		String regName = request.getParameter("regName");
+		String regCategory = request.getParameter("regCategory");
+		String regTel = request.getParameter("regTel");
+		
+		service.modifyCampNameDao(regName, regCategory, regTel, regSeq);
+		
+		return "redirect:modify_camp";
 	}
 	
 	

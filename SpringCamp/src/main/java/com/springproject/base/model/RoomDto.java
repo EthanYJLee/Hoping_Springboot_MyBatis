@@ -41,6 +41,14 @@ public class RoomDto {
 		this.roMax = roMax;
 	}
 
+	public RoomDto(int roNum, int roPrice, int roMax, int roSeq) {
+		super();
+		this.roNum = roNum;
+		this.roPrice = roPrice;
+		this.roMax = roMax;
+		this.roSeq = roSeq;
+	}
+
 	public int getRoSeq() {
 		return roSeq;
 	}
