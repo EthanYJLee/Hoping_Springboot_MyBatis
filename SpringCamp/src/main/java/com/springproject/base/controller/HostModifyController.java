@@ -62,17 +62,28 @@ public class HostModifyController {
 	
 	// 캠핑장 삭제 가능 여부 확인 (남은 예약이 있는지)
 	@RequestMapping("/delete_camp")
-	public String checkDeleteCamp(HttpSession session, Model model) throws Exception {
+	public String checkDeleteCamp(HttpSession session, Model model, HttpServletResponse response) throws Exception {
 		int hSeq = (int)session.getAttribute("HSEQ");
 		int regSeq = (int)session.getAttribute("REGSEQ");
-		RegcampDto dto = null;
-		dto = service.checkRemainingBookDao(hSeq, regSeq);
-		if (dto != null) {
-			model.addAttribute("CHECKDELETE", dto);
+		
+		// 1. 예약내역 (pay table에 정보가 한 건이라도 있는지) 확인
+		Integer chkPayment = service.checkPaymentRecordDao(regSeq);
+		// 0값이면 결제가 한 건도 없는 것
+		
+		// 2. 예약내역 있다면 현재 기준 미처리된 체크인이 남았는지 확인
+		RegcampDto chkCheckin = service.checkRemainingBookDao(hSeq, regSeq);
+		// null값이면 잔여 예약 있는 것
+		
+		if (chkCheckin != null && chkPayment!=0) {
+			model.addAttribute("CHECKDELETE", chkCheckin);
 			return "host/HostMakeSureToDelete";
+		
+		} else if (chkPayment == 0)	{
+			return "host/NoPaymentRecord";
 		} else {
 			return "host/CheckRemainingReservation";
 		}
+		
 	}
 	
 	// 캠핑장 정보 삭제

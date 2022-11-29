@@ -21,7 +21,10 @@ public interface HostModifyDao {
 	// 캠핑장 자리 정보 가져오기
 	public List<RoomDto> myRoomInfoDao(int hSeq, int regSeq) throws Exception;
 	
-	// 캠핑장 삭제 전 남은 예약 여부 확인
+	// 1. 삭제 전 결제기록 확인 (한 건이라도 존재하는지)
+	public Integer checkPaymentRecordDao(int regSeq) throws Exception;
+	
+	// 2. 캠핑장 삭제 전 남은 예약 여부 확인
 	public RegcampDto checkRemainingBookDao(int hSeq, int regSeq) throws Exception;
 	
 	// 캠핑장 영구삭제

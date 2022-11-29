@@ -17,6 +17,8 @@ public interface HostModifyDaoService {
 	
 	public List<RoomDto> myRoomInfoDao(int hSeq, int regSeq) throws Exception;
 	
+	public Integer checkPaymentRecordDao(int regSeq) throws Exception;
+	
 	public RegcampDto checkRemainingBookDao(int hSeq, int regSeq) throws Exception;
 	
 	public void campIsDeletedDao(int hSeq, int regSeq) throws Exception;

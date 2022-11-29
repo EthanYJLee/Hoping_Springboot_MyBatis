@@ -40,6 +40,11 @@ public class HostModifyDaoImpl implements HostModifyDao {
 	}
 
 	@Override
+	public Integer checkPaymentRecordDao(int regSeq) throws Exception {
+		return sqlSession.selectOne(nameSpace + ".checkPaymentRecordDao");
+	}
+	
+	@Override
 	public RegcampDto checkRemainingBookDao(int hSeq, int regSeq) throws Exception {
 		return sqlSession.selectOne(nameSpace + ".checkRemainingBookDao");
 	}
@@ -69,4 +74,5 @@ public class HostModifyDaoImpl implements HostModifyDao {
 		sqlSession.update(nameSpace + ".modifyCampNameDao");
 	}
 
+	
 }

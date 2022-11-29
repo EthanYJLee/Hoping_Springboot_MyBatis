@@ -43,6 +43,11 @@ public class HostModifyDaoServiceImpl implements HostModifyDaoService {
 	}
 
 	@Override
+	public Integer checkPaymentRecordDao(int regSeq) throws Exception {
+		return dao.checkPaymentRecordDao(regSeq);
+	}
+	
+	@Override
 	public RegcampDto checkRemainingBookDao(int hSeq, int regSeq) throws Exception {
 		return dao.checkRemainingBookDao(hSeq, regSeq);
 	}
@@ -71,6 +76,7 @@ public class HostModifyDaoServiceImpl implements HostModifyDaoService {
 	public void modifyCampNameDao(String regName, String regCategory, String regTel, int regSeq) throws Exception {
 		dao.modifyCampNameDao(regName, regCategory, regTel, regSeq);
 	}
+
 	
 	
 }

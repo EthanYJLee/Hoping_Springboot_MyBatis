@@ -30,7 +30,12 @@
 		and regcamp_host_hSeq = #{hSeq} and roDdate is null
 	</select>
 
-<!-- 캠핑장 삭제 전 잔여 예약 여부 체크하기 -->
+<!-- 1. 캠핑장 삭제 전 예약 (결제기록) 이 한 건이라도 있었는지 확인 -->
+	<select id="checkPaymentRecordDao" resultType="int">
+		select count(*) from pay where room_regcamp_regSeq = #{regSeq}
+	</select>
+
+<!-- 2. 캠핑장 삭제 전 잔여 예약 여부 체크하기 -->
 	<select id="checkRemainingBookDao" resultType="com.springproject.base.model.RegcampDto">
 	select reg.regName, reg.regTel, reg.regDetailaddress, reg.regSummary, 
 	reg.regImage1, reg.regImage2, reg.regImage3, reg.regImage4, reg.regDate 
