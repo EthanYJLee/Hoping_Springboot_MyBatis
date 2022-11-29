@@ -59,6 +59,19 @@
  function noBack(){window.history.forward();}
 </script>
 
+<!-- 등록 중단하고 메인으로 복귀 -->
+<script>
+function quit() {
+	var result = confirm("등록을 중단하고 메인화면으로 돌아갑니다.");
+	
+	if (result == true) {
+		window.location.href="back_to_main";
+	} else {
+		console.log("등록을 계속합니다.");
+	}
+}
+</script>
+
 </head>
 <body>
 
@@ -123,6 +136,7 @@
 				
 				<%-- 페이지 넘기는 버튼 --%>
 				<div class="row justify-content-end">
+					<button type="button" onclick="quit()" class="btn btn-outline-secondary">메인으로</button>
 					<a href="images_view" style="border-radius: 15px; width:100px;" class="col-2 btn mbtn">완료</a>
 				</div>
 			</div>

@@ -43,6 +43,34 @@
 		select regName from regcamp where host_hSeq = #{hSeq}
 	</select>
 	
+	
+	
+	
+	
+	
+	
+	
+<!-- 캠핑장 신규 등록 도중 취소시 모든 정보 삭제하고 메인화면으로 복귀 -->	
+	<delete id="backToMainDao">
+		delete from regcamp where 
+		regSeq = (select * from (select max(regSeq) 
+		from regcamp where host_hSeq = #{hSeq}) tmp) and host_hSeq = #{hSeq}
+	</delete>
+	
+<!-- 편의시설 (facility) 삭제 -->
+	<delete id="deleteFacilityDao">
+		delete from facility where regcamp_regSeq = #{regSeq} and regcamp_host_hSeq = #{hSeq};
+	</delete>
+
+<!-- 키워드 (keyword) 삭제 -->
+	<delete id="deleteKeywordDao">
+		delete from keyword where regcamp_regSeq = #{regSeq} and regcamp_host_hSeq = #{hSeq};
+	</delete>
+
+	
+	
+	
+	
 <!-- 위치, 설명, 이름, 전화번호, 카테고리 등록 -->	
 	<insert id="addCampLocationDao">
 		insert into regcamp (regDetailaddress, regSummary, regName, regDate, regTel, regCategory, host_hSeq) 

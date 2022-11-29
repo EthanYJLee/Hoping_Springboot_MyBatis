@@ -59,6 +59,19 @@
  function noBack(){window.history.forward();}
 </script>
 
+<!-- 등록 중단하고 메인으로 복귀 -->
+<script>
+function quit() {
+	var result = confirm("등록을 중단하고 메인화면으로 돌아갑니다.");
+	
+	if (result == true) {
+		window.location.href="back_to_main_k";
+	} else {
+		console.log("등록을 계속합니다.");
+	}
+}
+</script>
+
 </head>
 <body>
 
@@ -94,6 +107,7 @@
 	
 	<div class="d-flex flex-row-reverse">
  		<form class="p-2">
+ 			<button type="button" onclick="quit()" class="btn btn-outline-secondary">메인으로</button>
  			<a href="rooms_view" style="border-radius: 15px; width:100px;" class="btn mybtns btn-secondary">다음</a>
  		</form>
  	</div>

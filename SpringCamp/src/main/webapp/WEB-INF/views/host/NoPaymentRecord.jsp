@@ -10,7 +10,7 @@
 
 <script>
 window.onload = function test() {
-	var result = confirm("결제 기록이 없습니다. 삭제하시겠습니까?");
+	var result = confirm("결제/예약기록이 없습니다. 삭제하시겠습니까?");
 	
 	if (result == true) {
 		window.location.href="camp_is_deleted";

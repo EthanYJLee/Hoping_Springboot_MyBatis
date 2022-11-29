@@ -44,6 +44,26 @@ public class HostManageDaoServiceImpl implements HostManageDaoService {
 		return dao.campNameDao(hSeq);
 	}
 
+	
+	
+	
+
+	@Override
+	public void backToMainDao(int hSeq) throws Exception {
+		dao.backToMainDao(hSeq);
+	}
+	
+	@Override
+	public void deleteFacilityDao(int regSeq, int hSeq) throws Exception {
+		dao.deleteFacilityDao(regSeq, hSeq);
+	}
+
+	@Override
+	public void deleteKeywordDao(int regSeq, int hSeq) throws Exception {
+		dao.deleteKeywordDao(regSeq, hSeq);
+	}
+	
+	
 	@Override
 	public void addCampLocationDao(String regDetailaddress, String regSummary, String regName, String regTel,
 			String regCategory, int hSeq) throws Exception {
@@ -84,6 +104,9 @@ public class HostManageDaoServiceImpl implements HostManageDaoService {
 	public void deleteRoomsDao(int roSeq) throws Exception {
 		dao.deleteRoomsDao(roSeq);
 	}
+
+
+
 
 
 

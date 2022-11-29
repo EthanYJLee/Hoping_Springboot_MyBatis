@@ -25,6 +25,19 @@ public interface HostManageDao {
 	// 검색 콤보박스용 캠핑장 이름 목록
 	public List<String> campNameDao(int hSeq) throws Exception;
 	
+	
+	
+	
+	
+	// 캠핑장 신규 등록 도중 취소시 모든 정보 삭제하고 메인화면으로 복귀
+	public void backToMainDao(int hSeq) throws Exception;
+	
+	// 편의시설 삭제
+	public void deleteFacilityDao(int regSeq, int hSeq) throws Exception;
+	
+	// 키워드 삭제
+	public void deleteKeywordDao(int regSeq, int hSeq) throws Exception;
+	
 	// 추가할 캠핑장의 위치, 설명, 이름, 전화번호, 카테고리 등록
 	public void addCampLocationDao(String regDetailaddress, String regSummary, String regName, String regTel, String regCategory, int hSeq) throws Exception;
 	

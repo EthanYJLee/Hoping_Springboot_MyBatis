@@ -10,7 +10,7 @@
 
 <script>
 alert("로그인에 실패하였습니다");
-location.href="HostError.jsp";
+location.href="host_login";
 </script>
 
 </body>

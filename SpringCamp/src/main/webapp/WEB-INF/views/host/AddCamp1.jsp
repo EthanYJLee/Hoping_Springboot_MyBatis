@@ -55,6 +55,19 @@
  function noBack(){window.history.forward();}
 </script>
 
+<!-- 등록 중단하고 메인으로 복귀 -->
+<script>
+function quit() {
+	var result = confirm("등록을 중단하고 메인화면으로 돌아갑니다.");
+	
+	if (result == true) {
+		window.location.href="host_main";
+	} else {
+		console.log("등록을 계속합니다.");
+	}
+}
+</script>
+
 </head>
 <body>
 
@@ -85,7 +98,8 @@
 		
 			<input type="hidden" value="" id="hostlongitude" name="hostlongitude">
 			<input type="hidden" value="" id="hostlatitude" name="hostlatitude">
-			<%-- 제출되는 주소!! --%>
+			
+			<%-- 제출되는 주소 --%>
 			<div class="myscontainer">
 				주소 : <input class="myinfoinput" name="regDetailaddress" type="text" placeholder="캠핑장의 위치를 지도에서 선택해주세요." id="hostaddress">
 			</div>
@@ -124,6 +138,7 @@
 			</div>
 		 	<div class="d-flex flex-row-reverse">
 		 		<div class="p-2">
+		 			<button type="button" onclick="quit()" class="btn btn-outline-secondary">메인으로</button>
 		 			<button type="button" onclick="checkMember()" style="border-radius: 15px; width:100px;" class="btn mybtns btn-secondary">다음</button>
 		 		</div>
 		 	</div>

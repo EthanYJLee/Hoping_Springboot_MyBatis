@@ -18,6 +18,16 @@ public interface HostManageDaoService {
 	public void updateReviewGroupDao() throws Exception;
 	
 	public List<String> campNameDao(int hSeq) throws Exception;
+	
+	
+	
+
+	
+	public void backToMainDao(int hSeq) throws Exception;
+	
+	public void deleteFacilityDao(int regSeq, int hSeq) throws Exception;
+	
+	public void deleteKeywordDao(int regSeq, int hSeq) throws Exception;
 
 	public void addCampLocationDao(String regDetailaddress, String regSummary, String regName, String regTel, String regCategory, int hSeq) throws Exception;
 

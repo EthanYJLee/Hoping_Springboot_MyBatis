@@ -64,6 +64,39 @@ public class HostManageController {	// 옵션 관리하는 컨트롤러
 		return "redirect:/review_list";
 	}
 	
+	// 캠핑장 신규 등록중 취소시 DB에서 정보 완전히 삭제 (delete)하고 메인메뉴로 복귀
+	@RequestMapping("/back_to_main")
+	public String backToMain(HttpSession session) throws Exception {
+		int hSeq = (int)session.getAttribute("HSEQ");
+		manageDao.backToMainDao(hSeq);
+		
+		return "redirect:/host_main";
+	}
+	
+	@RequestMapping("/back_to_main_f")
+	public String backToMainF(HttpSession session) throws Exception {
+		int hSeq = (int)session.getAttribute("HSEQ");
+		int regSeq = (int)session.getAttribute("REGSEQ");
+		
+		manageDao.deleteFacilityDao(regSeq, hSeq);
+		manageDao.backToMainDao(hSeq);
+		
+		return "redirect:/host_main";
+	}
+	
+	@RequestMapping("/back_to_main_k")
+	public String backToMainK(HttpSession session) throws Exception {
+		int hSeq = (int)session.getAttribute("HSEQ");
+		int regSeq = (int)session.getAttribute("REGSEQ");
+		
+		manageDao.deleteKeywordDao(regSeq, hSeq);
+		manageDao.backToMainDao(hSeq);
+		
+		return "redirect:/host_main";
+	}
+	
+	
+	
 	// 캠핑장 추가 페이지 띄우기
 	@RequestMapping("/add_camp")
 	public String addCamp() throws Exception {
