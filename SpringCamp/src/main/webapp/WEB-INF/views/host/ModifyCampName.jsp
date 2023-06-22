@@ -40,7 +40,7 @@
 <%@ include file = "hnav1.jsp" %>
  
  <div class="container">
- 	<form name="Member" action="modify_camp_name">
+ 	<form action="modify_camp_name" method="post" name="Member">
 	 	<div class="row myhdrow">
 	 		<h5 class="col-12" style="margin: 20px 0 20px 0">이름을 수정하기</h5>
 	 		<div class="container">
@@ -61,7 +61,7 @@
 		 		<div>기존 카테고리 <b>"${campNameList.regCategory}"</b></div>
 		 		<%-- 라디오버튼 --%>
 		 	<div class="container myscontainer">
-		 		<input type="radio" class="btn-check" name="regCategory" id="option1" value="글램핑장"  autocomplete="off">
+		 		<input type="radio" class="btn-check" name="regCategory" id="option1" value="글램핑장" autocomplete="off" checked>
 				<label class="btn btn-outline-primary" for="option1" >글램핑장</label>
 
 				<input type="radio" class="btn-check" name="regCategory" id="option2"value="카라반" autocomplete="off">
@@ -91,32 +91,27 @@
 
 function checkMember(){
 		
-	var regExTel = /^\d{3}-\d{3,4}-\d{4}$/;
-	
+	var regExTel = /^\d{2,3}-\d{3,4}-\d{4}$/;
 	var form = document.Member;
 	
 	let regTel = form.regTel.value;
 	let regName = form.regName.value;
+	let regCategory = form.regCategory.value;
 	
-	//null 제한 
 	if(regName == ""){
 		alert("캠핑장 이름을 입력해주세요.")
 		form.regName.focus();
 		return false;
 	}
-	
 	if(regTel == ""){
 		alert("전화번호를 입력해주세요.")
 		form.regTel.focus();
 		return false;
 	}
-	
-	
-	//전화번호 숫자만 입력
 	if(!regExTel.test(regTel)){
 		alert("전화번호 형식으로 입력해주세요. \nex.02-000-0000")
-		form.regTel.select();
-		return
+		form.regTel.focus();
+		return false;
 	}
 	
 	alert("수정되었습니다.")

@@ -124,6 +124,7 @@ public class HostModifyController {
 		return "redirect:modify_camp";
 	}
 	
+	// 캠핑장 이름 / 카테고리 / 전화번호 수정하는 페이지로 이동
 	@RequestMapping("/camp_name_view")
 	public String campNameView(HttpSession session, Model model) throws Exception {
 		int regSeq = (int)session.getAttribute("REGSEQ");
@@ -131,6 +132,7 @@ public class HostModifyController {
 		model.addAttribute("campNameList", dto);
 		return "host/ModifyCampName";
 	}
+	
 	
 	@RequestMapping("/modify_camp_name")
 	public String modifyCampName(HttpServletRequest request, HttpSession session) throws Exception {
@@ -141,7 +143,8 @@ public class HostModifyController {
 		
 		service.modifyCampNameDao(regName, regCategory, regTel, regSeq);
 		
-		return "redirect:modify_camp";
+//		return "redirect:modify_camp";
+		return "host/ModifyCampMain";
 	}
 	
 	

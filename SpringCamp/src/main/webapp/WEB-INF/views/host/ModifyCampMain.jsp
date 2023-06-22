@@ -48,8 +48,10 @@
  	</div>
  	<div class="row myhdrow">
  		<div class="col-6 "><a href="camp_location_view" type="button" style="border-radius: 10px; width:400px; height: 60px;" class="btn mybtns btn-secondary">캠핑장 위치 / 설명</a></div>
- 		<div class="col-6 "><a href="HostInfoMNCTView" type="button" style="border-radius: 10px; width:400px; height: 60px;" class="btn mybtns btn-secondary">이름 / 카테고리 / 전화번호</a></div>
+ 		<div class="col-6 "><a href="camp_name_view" type="button" style="border-radius: 10px; width:400px; height: 60px;" class="btn mybtns btn-secondary">이름 / 카테고리 / 전화번호</a></div>
  	</div>
+ 	
+ 	<%-- 현재 미구현 상태 --%>
  	<div class="row myhdrow">
  		<div class="col-6 "><a href="HostInfoKeyView" type="button" style="border-radius: 10px; width:400px; height: 60px;" class="btn mybtns btn-secondary">키워드</a></div>
  		<div class="col-6 "><a href="HostInfoFaciView" type="button" style="border-radius: 10px; width:400px; height: 60px;" class="btn mybtns btn-secondary">편의시설</a></div>
@@ -60,6 +62,8 @@
  	</div>
  	<div class="row myhdrow">
  		<div class="col-6 "><a href="HostInfoRoomView" type="button" style="border-radius: 10px; width:400px; height: 60px;" class="btn mybtns btn-secondary">자리 수정</a></div>
+ 	<%-- ------------- --%>
+ 	
  		<div class="col-6 "><a href="delete_camp" type="button" style="border-radius: 10px; width:400px; height: 60px;" class="btn mybtns btn-secondary">캠핑장 삭제</a></div>
  	</div>
  </div>
